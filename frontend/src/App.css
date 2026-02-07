@@ -1,34 +1,154 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* App-specific styles - using design tokens */
+
+/* Hero section gradient overlay */
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--background)) 0%,
+    hsl(var(--muted)) 50%,
+    hsl(var(--background)) 100%
+  );
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Smooth page transitions */
+.page-transition {
+  opacity: 0;
+  animation: fadeIn 0.4s ease forwards;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
-.App-link {
-    color: #61dafb;
+/* Resume template styles */
+.resume-template {
+  aspect-ratio: 8.5 / 11;
+  background: white;
+  box-shadow: 0 4px 20px hsl(var(--foreground) / 0.1);
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Form input focus enhancement */
+.input-focus-ring:focus-within {
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+}
+
+/* Score meter gradient */
+.score-meter {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--destructive)) 0%,
+    hsl(var(--warning)) 50%,
+    hsl(var(--success)) 100%
+  );
+}
+
+/* PDF preview shadow */
+.pdf-preview {
+  box-shadow: 
+    0 0 0 1px hsl(var(--border)),
+    0 10px 30px -10px hsl(var(--foreground) / 0.15);
+}
+
+/* Stagger animation for list items */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.stagger-item.visible {
+  animation: staggerFadeIn 0.4s ease forwards;
+}
+
+@keyframes staggerFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Template selection hover effect */
+.template-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.template-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px hsl(var(--foreground) / 0.12);
+}
+
+/* Loading spinner */
+.loading-spinner {
+  border: 2px solid hsl(var(--muted));
+  border-top-color: hsl(var(--primary));
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Prose styles for generated content */
+.prose-content h1,
+.prose-content h2,
+.prose-content h3 {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+.prose-content p {
+  color: hsl(var(--muted-foreground));
+  line-height: 1.7;
+}
+
+.prose-content ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+}
+
+.prose-content li {
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 0.5rem;
+}
+
+/* Document paper effect */
+.paper-effect {
+  background: linear-gradient(
+    to bottom,
+    hsl(0 0% 100%) 0%,
+    hsl(0 0% 99%) 100%
+  );
+  border: 1px solid hsl(var(--border));
+}
+
+/* Sidebar navigation active state */
+.nav-active {
+  background: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
+  border-left: 3px solid hsl(var(--primary));
+}
+
+/* Score badge colors */
+.score-badge-excellent {
+  background: hsl(var(--success) / 0.1);
+  color: hsl(var(--success));
+}
+
+.score-badge-good {
+  background: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
+}
+
+.score-badge-average {
+  background: hsl(var(--warning) / 0.1);
+  color: hsl(var(--warning));
+}
+
+.score-badge-poor {
+  background: hsl(var(--destructive) / 0.1);
+  color: hsl(var(--destructive));
 }
